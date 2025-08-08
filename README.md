@@ -16,26 +16,27 @@ Un clasificador inteligente que utiliza **NLP real con DeepSeek** para identific
 
 ```
 cloud_models_classifier/
-├── src/                    # Código fuente principal
-│   ├── __init__.py        # Paquete principal
-│   ├── clasificador.py    # Clasificador principal con DeepSeek
-│   ├── configuracion.py   # Manejo de configuración y variables de entorno
-│   ├── modelos.py         # Modelos de datos (ResultadoClasificacion)
-│   ├── utilidades.py      # Utilidades y helpers
-│   └── demo.py           # Módulo de demostración
-├── config/                 # Configuración
-│   └── config.env         # Variables de entorno (API keys, URLs)
-├── tests/                  # Pruebas unitarias organizadas
-│   ├── __init__.py        # Paquete de pruebas
-│   ├── casos_prueba.py    # Casos de prueba organizados (básicos, avanzados, edge)
+├── setup/                    # Código fuente principal
+│   ├── __init__.py          # Paquete principal
+│   ├── clasificador.py      # Clasificador principal con DeepSeek
+│   ├── configuracion.py     # Manejo de configuración y variables de entorno
+│   ├── modelos.py           # Modelos de datos (ResultadoClasificacion)
+│   ├── utilidades.py        # Utilidades y helpers
+│   └── demo.py             # Módulo de demostración
+├── config/                   # Configuración
+│   └── config.env           # Variables de entorno (API keys, URLs)
+├── tests/                    # Pruebas unitarias organizadas
+│   ├── __init__.py          # Paquete de pruebas
+│   ├── casos_prueba.py      # Casos de prueba organizados (básicos, avanzados, edge)
 │   ├── utilidades_prueba.py # Utilidades para ejecutar y reportar pruebas
-│   └── ejecutar_pruebas.py # Script principal para ejecutar todas las pruebas
-├── docs/                   # Documentación (preparado para futuras expansiones)
-├── main.py                 # Script principal para demostración
-├── requirements.txt        # Dependencias del proyecto
-├── pytest.ini            # Configuración de pytest
-├── .gitignore            # Archivos a ignorar en Git
-└── README.md             # Este archivo
+│   └── ejecutar_pruebas.py  # Script principal para ejecutar todas las pruebas
+├── docs/                     # Documentación (preparado para futuras expansiones)
+├── screenshots/              # Evidencias de funcionamiento
+├── main.py                   # Script principal para demostración
+├── requirements.txt          # Dependencias del proyecto
+├── pytest.ini              # Configuración de pytest
+├── .gitignore              # Archivos a ignorar en Git
+└── README.md               # Este archivo
 ```
 
 ## 🛠️ Instalación
@@ -81,7 +82,7 @@ MAX_TEXT_LENGTH=1000
 ### Uso Básico
 
 ```python
-from src import ClasificadorModelosNube
+from setup import ClasificadorModelosNube
 
 # Crear clasificador
 clasificador = ClasificadorModelosNube()
@@ -98,6 +99,22 @@ print(f"Puntajes: {resultado.puntajes}")
 
 ```bash
 python main.py
+```
+
+### Línea de Comandos
+
+```bash
+# Modo interactivo
+python main.py
+
+# Clasificar texto específico
+python main.py -t "AWS EC2 servidores virtuales"
+
+# Ejecutar demostración
+python main.py --demo
+
+# Ver ayuda
+python main.py --help
 ```
 
 ## 📊 Ejemplos de Clasificación
@@ -186,11 +203,11 @@ El sistema proporciona:
 
 ### Arquitectura Modular
 
-- **`src/clasificador.py`**: Lógica principal de clasificación con DeepSeek
-- **`src/configuracion.py`**: Gestión de variables de entorno
-- **`src/modelos.py`**: Definición de estructuras de datos
-- **`src/utilidades.py`**: Funciones auxiliares (preprocesamiento, validación)
-- **`src/demo.py`**: Módulo de demostración
+- **`setup/clasificador.py`**: Lógica principal de clasificación con DeepSeek
+- **`setup/configuracion.py`**: Gestión de variables de entorno
+- **`setup/modelos.py`**: Definición de estructuras de datos
+- **`setup/utilidades.py`**: Funciones auxiliares (preprocesamiento, validación)
+- **`setup/demo.py`**: Módulo de demostración
 
 ### Integración con DeepSeek
 
@@ -205,35 +222,33 @@ El sistema proporciona:
 - **Preprocesamiento**: Limpieza y normalización del texto
 - **Manejo de Errores**: Respuestas informativas para entradas inválidas
 
-## 📈 Métricas de Rendimiento
+## 📸 Evidencias de Funcionamiento
 
-- **Precisión**: 95% en casos de prueba
-- **Tiempo de Respuesta**: < 2 segundos por clasificación
-- **Robustez**: Manejo de errores ortográficos y texto mal escrito
-- **Escalabilidad**: Configuración flexible para diferentes volúmenes
+### Evidencia 1: Clasificación Exitosa
+![Evidencia 1](screenshots/evidencia1.png)
 
-## 🔮 Próximas Mejoras
+*Clasificación correcta de servicios de nube con puntajes precisos*
 
-- [ ] Integración con pytest para pruebas automatizadas
-- [ ] Documentación API completa
-- [ ] Interfaz web para clasificación
-- [ ] Análisis de sentimientos en las respuestas
-- [ ] Soporte para múltiples idiomas
+### Evidencia 2: Sistema de Pruebas
+![Evidencia 2](screenshots/evidencia2.png)
 
-## 🤝 Contribuir
+*Suite de pruebas ejecutándose con 95% de tasa de éxito*
 
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+## 🤖 Reflexión sobre el Uso de IA en el Desarrollo
 
-## 📄 Licencia
+Como estudiante de ITC, esta experiencia de desarrollar un clasificador de modelos de nube utilizando IA ha sido verdaderamente reveladora. La capacidad de integrar modelos de lenguaje como DeepSeek a través de APIs como OpenRouter ha transformado completamente mi perspectiva sobre el desarrollo de software.
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+**Arquitectura y Diseño**: La IA no solo nos ayudó a escribir código, sino que también nos guió en el diseño de una arquitectura modular y escalable. La separación de responsabilidades entre configuración, utilidades, modelos y el clasificador principal demuestra cómo la IA puede sugerir patrones de diseño profesionales que normalmente requerirían años de experiencia.
 
-## 📞 Contacto
+**Integración de APIs**: El proceso de integrar APIs externas como DeepSeek fue sorprendentemente fluido. La IA nos ayudó a manejar errores, implementar retry logic, y crear prompts optimizados que maximizan la precisión del modelo. Esto me hizo darme cuenta de que el futuro del desarrollo no está en escribir código repetitivo, sino en orquestar sistemas inteligentes.
 
-Para preguntas o sugerencias, por favor abre un issue en el repositorio.
+**Testing y Validación**: La implementación de un sistema de pruebas robusto con diferentes categorías (básicas, avanzadas, edge) fue otro aspecto donde la IA brilló. No solo sugirió casos de prueba relevantes, sino que también nos ayudó a crear un framework de testing que valida tanto la funcionalidad como la robustez del sistema.
+
+**Gestión de Configuración**: El uso de variables de entorno y archivos de configuración separados muestra cómo la IA puede guiarnos hacia mejores prácticas de DevOps desde el inicio del proyecto.
+
+Como futuro ITC, esta experiencia me ha enseñado que la IA no reemplaza al desarrollador, sino que lo potencia. El verdadero valor está en saber qué preguntar, cómo interpretar las respuestas, y cómo integrar múltiples sistemas inteligentes de manera coherente. La capacidad de trabajar con modelos de lenguaje, APIs, y sistemas distribuidos será fundamental en el futuro del desarrollo de software.
+
+Esta experiencia me ha convencido de que el futuro de la ingeniería de software está en la colaboración humano-IA, donde los desarrolladores se convierten en arquitectos de sistemas inteligentes, orquestando múltiples servicios de IA para crear soluciones más potentes y eficientes que nunca antes habrían sido posibles.
+
 
 
